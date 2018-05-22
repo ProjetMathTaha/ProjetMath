@@ -3,40 +3,46 @@ import java.math.BigInteger;
 public class Suite1 {
 	
 	public static void main(String [] args) {
-		long x0 =43278;
+		long x0 =43277;
+		long x1;
 		long a =2;
 		long b =1;
-		int moyenne = 0;
-		for ( int i = 0 ; i < 100 ; i++) {
-			x0 = gener(x0, a, b);
+		long[] tabNb = new long[100]; // tableau contenant les nbr generés
+		Doublet<Long>[] tabDoublet = new Doublet[100]; // tableau contenant les doublets
+		int[] tabModDeux = new int[100]; // tableau des nombres modulo 2 
+		Doublet<Integer>[] tabDoubletModDeux = new Doublet[100];
+		
+		// ranger dans les tableau x0
+		tabNb[0]=x0;
+		tabModDeux[0]=(int) (x0%2);
+		
+		for ( int i = 1 ; i < 100 ; i++) {
+			// generation du nb aleatoire
+			x1 = generLineaire(x0, a, b);
+			// le nb est rangé dans le tableau
+			tabNb[i]= x1;
+			
+			// creation des doublet de chiffre, rangé dans un tableau
+			tabDoublet[i] = new Doublet<Long>(x0, x1);
+			
+			// ratio des nb en binaire 2 par 2 
+			tabDoubletModDeux[i] = new Doublet<Integer>((int)x0%2, (int)x1%2);
+			
+			// tranfert
+			x0=x1;
+			
+			// passer les nb en mod 2 
+			tabModDeux[i] = (int) (x1%2);
 			
 			
-			//System.out.println(x0);
-			//System.out.println(calculNb1(x0));
-			System.out.printf("%027d \n", new BigInteger(Long.toBinaryString((long)x0)));
-			
-			moyenne += calculNb1(x0);
-			
-			//System.out.printf("%32d",d);
-
 		}
-		System.out.println(moyenne/100);
 	}
 
-	public static long gener(long x0, long a, long b) {
+	public static long generLineaire(long x0, long a, long b) {
 		long m = (long) Math.pow(10, 8);
 		long x = x0;
 		
 		return (a*x + b)%m;
 	}
-
-	public static int calculNb1(long x0) {
-		String x = Long.toBinaryString(x0);
-		int j =0;
-		for(int i = 0; i < x.length(); i++ ) {
-			if(x.charAt(i) == '1')
-				j++;
-		}
-		return j;
-	}
+	
 }
