@@ -77,7 +77,7 @@ public class GenerateurSuitePseudoAleatoire {
 		return res;
 	}
 	
-	// methode qui calcul les frequence 
+	// methode qui calcul les frequence  
 	
 	
 	// methode qui renvoie la liste des nombres générés
