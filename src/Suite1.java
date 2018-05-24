@@ -1,5 +1,3 @@
-import java.math.BigInteger;
-
 public class Suite1 {
 	
 	public static void main(String [] args) {
