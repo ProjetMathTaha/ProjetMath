@@ -1,4 +1,6 @@
+#diego
 *.DS_Store
+/lib/jfreechart-1.0.19/
 /bin/
 
 FreeChart/
@@ -6,3 +8,4 @@ FreeChart/
 JFreeChart/
 
 \.classpath
+
