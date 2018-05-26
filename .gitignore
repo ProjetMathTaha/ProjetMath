@@ -2,10 +2,13 @@
 *.DS_Store
 /lib/jfreechart-1.0.19/
 /bin/
+\.idea/
+
 
 FreeChart/
 
 JFreeChart/
 
 \.classpath
+
 

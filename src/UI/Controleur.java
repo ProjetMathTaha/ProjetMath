@@ -5,14 +5,18 @@ import java.awt.event.ActionListener;
 
 public class Controleur implements ActionListener {
 
+	Modele modele;
+	Vue vue;
+	
 	public Controleur(Vue vue) {
-		// TODO Auto-generated constructor stub
+		this.vue = vue;
+		this.modele = new Modele();
+		this.modele.genererDonnee();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		this.vue.afficherDonnee(this.modele.getDonnee());
 	}
 
 }
