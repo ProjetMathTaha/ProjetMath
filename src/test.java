@@ -1,3 +1,4 @@
+import Calcul.GenerateurSuitePseudoAleatoire;
 
 public abstract class test {
 

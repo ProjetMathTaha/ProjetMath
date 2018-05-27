@@ -1,3 +1,5 @@
+import Calcul.Doublet;
+
 public class Suite1 {
 	
 	public static void main(String [] args) {
@@ -5,7 +7,7 @@ public class Suite1 {
 		long x1;
 		long a =2;
 		long b =1;
-		long[] tabNb = new long[100]; // tableau contenant les nbr generés
+		long[] tabNb = new long[100]; // tableau contenant les nbr generï¿½s
 		Doublet<Long>[] tabDoublet = new Doublet[100]; // tableau contenant les doublets
 		int[] tabModDeux = new int[100]; // tableau des nombres modulo 2 
 		Doublet<Integer>[] tabDoubletModDeux = new Doublet[100];
@@ -17,10 +19,10 @@ public class Suite1 {
 		for ( int i = 1 ; i < 100 ; i++) {
 			// generation du nb aleatoire
 			x1 = generLineaire(x0, a, b);
-			// le nb est rangé dans le tableau
+			// le nb est rangï¿½ dans le tableau
 			tabNb[i]= x1;
 			
-			// creation des doublet de chiffre, rangé dans un tableau
+			// creation des doublet de chiffre, rangï¿½ dans un tableau
 			tabDoublet[i] = new Doublet<Long>(x0, x1);
 			
 			// ratio des nb en binaire 2 par 2 

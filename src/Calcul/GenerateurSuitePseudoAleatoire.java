@@ -1,3 +1,4 @@
+package Calcul;
 
 public class GenerateurSuitePseudoAleatoire {
 
@@ -15,13 +16,13 @@ public class GenerateurSuitePseudoAleatoire {
 	// ???
 	int x1;
 	
-	// tableau contenant le resultat de tous les nombres generés
+	// tableau contenant le resultat de tous les nombres generï¿½s
 	long[] tabDesNombresGeneres;
 	
-	// tableau contenant les doublets de nombres générés
+	// tableau contenant les doublets de nombres gï¿½nï¿½rï¿½s
 	Doublet<Long>[] tabDoublet;
 	
-	// tableau contenant les nombre generé modulo deux
+	// tableau contenant les nombre generï¿½ modulo deux
 	int[] tabModDeux;
 	
 	public GenerateurSuitePseudoAleatoire(int a, int b, int x0, int m, int taille, int x1) {
@@ -50,7 +51,7 @@ public class GenerateurSuitePseudoAleatoire {
 		return this.tabDoublet;
 	}
 	
-	// methode qui genere un tableau  modulo 2 de la suite généré par la fonction
+	// methode qui genere un tableau  modulo 2 de la suite gï¿½nï¿½rï¿½ par la fonction
 	public int[] genererTableauBinaire() {
 		for ( int i = 0 ; i < this.taille ; i++ ) {
 			this.tabModDeux[i] = (int) (this.tabDesNombresGeneres[i]%2);
@@ -58,7 +59,7 @@ public class GenerateurSuitePseudoAleatoire {
 		return this.tabModDeux;
 	}
 	
-	// calcul la fréquence de 0 
+	// calcul la frï¿½quence de 0 
 	public float calculFrequence() {
 		int nbZero = 0;
 		for ( int i = 0 ; i < this.tabModDeux.length ; i++ ) {
@@ -80,7 +81,7 @@ public class GenerateurSuitePseudoAleatoire {
 	// methode qui calcul les frequence  
 	
 	
-	// methode qui renvoie la liste des nombres générés
+	// methode qui renvoie la liste des nombres gï¿½nï¿½rï¿½s
 	public long[] getTabDesNombresGeneres() {
 		return tabDesNombresGeneres;
 	}
@@ -97,7 +98,7 @@ public class GenerateurSuitePseudoAleatoire {
 			
 	}
 	
-	// verifie une des conditions du théoree Hull-Dobell
+	// verifie une des conditions du thï¿½oree Hull-Dobell
 	private  boolean estDiviseQuatre() {
 		boolean res = true;
 		if ( this.m%4 == 0 && (this.a - 1 )%4 != 0 )
@@ -105,7 +106,7 @@ public class GenerateurSuitePseudoAleatoire {
 		return res;
 	}
 	
-	// calcule le pgcd de 2 nombres passés en parametres
+	// calcule le pgcd de 2 nombres passï¿½s en parametres
 	private static long pgcd(long a, long b) {
 		long r;
 		if ( a > b ) {

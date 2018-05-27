@@ -120,20 +120,9 @@ public class Vue extends JPanel {
 		this.graphPanel.repaint();
   }
 
-  /*
-  private void refreshChart() {
-	    jPanel_GraphicsTop.removeAll();
-	    jPanel_GraphicsTop.revalidate(); // This removes the old chart 
-	    
-	    aChart = createChart(); 
-	    aChart.removeLegend(); 
-	    ChartPanel chartPanel = new ChartPanel(aChart); 
-	    
-	    jPanel_GraphicsTop.setLayout(new BorderLayout()); 
-	    jPanel_GraphicsTop.add(chartPanel); 
-	    jPanel_GraphicsTop.repaint(); // This method makes the new chart appear
-	}
-*/
+  public Map<String, JTextField> getParametres() {
+	  return this.champsParametres;
+  }
   
   
 }

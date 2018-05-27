@@ -1,3 +1,4 @@
+package Calcul;
 public class Doublet<T> {
 		private T a;
 		private T b;
