@@ -13,8 +13,6 @@ public class GenerateurSuitePseudoAleatoire {
 	// taille de la suite
 	int taille;
 	
-	// ???
-	int x1;
 	
 	// tableau contenant le resultat de tous les nombres gener�s
 	long[] tabDesNombresGeneres;
@@ -25,13 +23,12 @@ public class GenerateurSuitePseudoAleatoire {
 	// tableau contenant les nombre gener� modulo deux
 	int[] tabModDeux;
 	
-	public GenerateurSuitePseudoAleatoire(int a, int b, int x0, int m, int taille, int x1) {
+	public GenerateurSuitePseudoAleatoire(int a, int b, int x0, int m, int taille) {
 		this.a = a;
 		this.b = b;
 		this.x0 = x0;
 		this.m = m;
 		this.taille = taille;
-		this.x1 = x1;
 		this.tabDesNombresGeneres = new long[taille];
 		this.tabDoublet = new Doublet[taille-1];
 		
@@ -47,8 +44,6 @@ public class GenerateurSuitePseudoAleatoire {
 	public Doublet<Long>[] genererDoublets() {
 		for ( int i = 0; i < this.tabDoublet.length ; i++ ) {
 			this.tabDoublet[i] = new Doublet<Long>(this.tabDesNombresGeneres[i], this.tabDesNombresGeneres[i+1]);
-			   System.out.println(" | i = "+i+" a = "+this.tabDesNombresGeneres[i]+" b = "+this.tabDesNombresGeneres[i+1]);
-
 		}
 		return this.tabDoublet;
 	}

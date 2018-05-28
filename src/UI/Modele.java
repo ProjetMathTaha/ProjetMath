@@ -1,5 +1,7 @@
 package UI;
 
+import java.io.IOException;
+
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -15,12 +17,16 @@ public class Modele {
 	
 	public void genererDonnee(int a, int b, int x0, int m, int taille, int x1) {
 
-		GenerateurSuitePseudoAleatoire g = new GenerateurSuitePseudoAleatoire(a, b, x0, m, taille, x1);
+		GenerateurSuitePseudoAleatoire g = new GenerateurSuitePseudoAleatoire(a, b, x0, m, taille);
 		Doublet<Long>[] d = g.genererDoublets();
 		    
 		this.serie = new XYSeries("X0");
+		
+		
+		
 	   for(int i =0; i<d.length; i++) {
 		   this.serie.add(d[i].getA(), d[i].getB());
+		
 		   System.out.println("MODELE | i = "+i+" a = "+d[i].getA()+" b = "+d[i].getB());
 	   }
 	    /*
