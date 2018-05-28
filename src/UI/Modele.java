@@ -47,5 +47,7 @@ public class Modele {
 	public XYSeries getDonnee() {
 	    return this.serie;
 	}
+	
+	
 }
 

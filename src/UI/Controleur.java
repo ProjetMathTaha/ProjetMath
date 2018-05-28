@@ -26,6 +26,8 @@ public class Controleur implements ActionListener {
 				1);//??
 		
 		this.vue.afficherDonnee(this.modele.getDonnee());
+		float [] t = {0.23F};
+		this.vue.afficherStats(1, t);
 	}
 
 }

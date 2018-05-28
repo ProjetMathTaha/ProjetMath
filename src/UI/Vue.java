@@ -24,7 +24,9 @@ public class Vue extends JPanel {
 	
 	private Map<String, JTextField> champsParametres; // contient les JTextField des parametres
 	private JButton valider;
-	private JPanel graphPanel;
+  	private JPanel parametres ;// contient les parametres � entrer par l'utilisateur
+  	private JPanel graphs; // contient les graphs
+  	private JPanel stats ; // contient les stats
  
   public Vue() { 
 	  
@@ -35,9 +37,9 @@ public class Vue extends JPanel {
 	  
 	  	// creation de 3 panels et ajout du layout a la classe
 	    this.setLayout(new BorderLayout());
-	  	JPanel parametres = new JPanel(); // contient les parametres � entrer par l'utilisateur
-	  	JPanel graphs = new JPanel(); // contient les graphs
-	  	JPanel stats = new JPanel(); // contient les stats
+	  	this.parametres = new JPanel(); // contient les parametres � entrer par l'utilisateur
+	  	this.graphs = new JPanel(); // contient les graphs
+	  	this.stats = new JPanel(); // contient les stats
 	  	
 	  	this.add(parametres, BorderLayout.NORTH);
 	  	this.add(graphs, BorderLayout.CENTER);
@@ -93,14 +95,16 @@ public class Vue extends JPanel {
 	    
 	    ChartPanel chartPanel = new ChartPanel(graph);
 	    
-	    this.graphPanel = new JPanel();
-	    this.graphPanel.add(chartPanel);
-	    this.add(graphPanel);
-  } 
+	    this.graphs = new JPanel();
+	    this.graphs.add(chartPanel);
+	    this.add(graphs);
+	    
+	    
+  }
   
   public void afficherDonnee(XYSeries donnee) {
-	  	this.graphPanel.removeAll();
-	  	this.graphPanel.revalidate();
+	  	this.graphs.removeAll();
+	  	this.graphs.revalidate();
 	  	
 		XYSeriesCollection data = new XYSeriesCollection();
 		data.addSeries(donnee);
@@ -115,9 +119,17 @@ public class Vue extends JPanel {
 	    plot.setBackgroundPaint(new Color(255,228,196));
 	    
 	    ChartPanel chartPanel = new ChartPanel(graph);
-	    this.graphPanel.add(chartPanel);
+	    this.graphs.add(chartPanel);
 
-		this.graphPanel.repaint();
+		this.graphs.repaint();
+  }
+  
+  public void afficherStats(int nombreDeFrequences, float [] tabFrequence) {
+	  this.stats.setLayout(new GridLayout(nombreDeFrequences, 1 ));
+		for ( int i = 0 ; i < nombreDeFrequences ; i++ ) {
+			this.stats.add(new JLabel("frequence de '1' par couple de "+i+" = "+tabFrequence[i]));
+		}
+		this.graphs.repaint();
   }
 
   public Map<String, JTextField> getParametres() {

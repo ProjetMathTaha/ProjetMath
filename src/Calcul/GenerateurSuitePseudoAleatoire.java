@@ -76,7 +76,17 @@ public class GenerateurSuitePseudoAleatoire {
 	}
 	
 	// methode qui calcul les frequence  
-	
+	public float calculFrequenceDeZero() {
+		float res = 0;
+		int[] tab = this.genererTableauBinaire();
+		for ( int i : tab) {
+			if ( i == 0 )
+				res++;
+		}
+		return res/tab.length;
+			
+		
+	}
 	
 	// methode qui renvoie la liste des nombres g�n�r�s
 	public long[] getTabDesNombresGeneres() {
