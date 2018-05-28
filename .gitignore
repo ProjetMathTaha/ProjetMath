@@ -12,3 +12,5 @@ JFreeChart/
 \.classpath
 
 
+
+*.class
