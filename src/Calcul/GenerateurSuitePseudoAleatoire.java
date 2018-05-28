@@ -38,7 +38,7 @@ public class GenerateurSuitePseudoAleatoire {
 		// generation des nombres
 		tabDesNombresGeneres[0] = this.x0;
 		for ( int i = 1 ; i < taille ; i++ ) {
-			this.x0 = (a*x0 + b)%m;
+			this.x0 = (this.a*this.x0 + this.b)%this.m;
 			tabDesNombresGeneres[i]=this.x0;
 		}
 	}
@@ -47,6 +47,8 @@ public class GenerateurSuitePseudoAleatoire {
 	public Doublet<Long>[] genererDoublets() {
 		for ( int i = 0; i < this.tabDoublet.length ; i++ ) {
 			this.tabDoublet[i] = new Doublet<Long>(this.tabDesNombresGeneres[i], this.tabDesNombresGeneres[i+1]);
+			   System.out.println(" | i = "+i+" a = "+this.tabDesNombresGeneres[i]+" b = "+this.tabDesNombresGeneres[i+1]);
+
 		}
 		return this.tabDoublet;
 	}
