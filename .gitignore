@@ -1,2 +1,12 @@
+#diego
 *.DS_Store
 /bin/
+\.idea/
+
+
+
+\.classpath
+
+
+
+*.class
