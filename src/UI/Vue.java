@@ -55,31 +55,31 @@ public class Vue extends JPanel {
   		JLabel jlabelA = new JLabel("a :");
   		jlabelA.setHorizontalAlignment(SwingConstants.CENTER);
   		parametresValeurs.add(jlabelA);
-  		champsParametres.put("a", new JTextField());
+  		champsParametres.put("a", new JTextField("314125421"));
   		parametresValeurs.add(champsParametres.get("a"));
   		
   		JLabel jlabelB = new JLabel("b :");
   		jlabelB.setHorizontalAlignment(SwingConstants.CENTER);
   		parametresValeurs.add(jlabelB);
-  		champsParametres.put("b", new JTextField());
+  		champsParametres.put("b", new JTextField("1"));
   		parametresValeurs.add(champsParametres.get("b"));
   		
   		JLabel jlabelX0 = new JLabel("x0 :");
   		jlabelX0.setHorizontalAlignment(SwingConstants.CENTER);
   		parametresValeurs.add(jlabelX0);
-  		champsParametres.put("x0", new JTextField());
+  		champsParametres.put("x0", new JTextField("4327"));
   		parametresValeurs.add(champsParametres.get("x0"));
   		
   		JLabel jlabelM = new JLabel("m :");
   		jlabelM.setHorizontalAlignment(SwingConstants.CENTER);
   		parametresValeurs.add(jlabelM);
-  		champsParametres.put("m", new JTextField());
+  		champsParametres.put("m", new JTextField("2675591"));
   		parametresValeurs.add(champsParametres.get("m"));
   		
   		JLabel jlabelNB = new JLabel("nb :");
   		jlabelNB.setHorizontalAlignment(SwingConstants.CENTER);
   		parametresValeurs.add(jlabelNB);
-  		champsParametres.put("nb", new JTextField());
+  		champsParametres.put("nb", new JTextField("20001"));
   		parametresValeurs.add(champsParametres.get("nb"));
   		
   		
@@ -124,12 +124,19 @@ public class Vue extends JPanel {
 		this.graphs.repaint();
   }
   
-  public void afficherStats(int nombreDeFrequences, float [] tabFrequence) {
-	  this.stats.setLayout(new GridLayout(nombreDeFrequences, 1 ));
-		for ( int i = 0 ; i < nombreDeFrequences ; i++ ) {
-			this.stats.add(new JLabel("frequence de '1' par couple de "+i+" = "+tabFrequence[i]));
-		}
-		this.graphs.repaint();
+  public void afficherStats( float frequenceZero , float[]frequenceDoublets, float difference) {
+	  this.stats.removeAll();
+	  this.stats.revalidate();
+	  this.stats.setLayout(new GridLayout(frequenceDoublets.length +2, 1 ));
+	  this.stats.add(new JLabel("frequence de zero dans la suite= "+frequenceZero));
+	  this.stats.add(new JLabel("frequence de 00 = "+frequenceDoublets[0]));
+	  this.stats.add(new JLabel("frequence de 01 = "+frequenceDoublets[1]));
+	  this.stats.add(new JLabel("frequence de 10 = "+frequenceDoublets[2]));
+	  this.stats.add(new JLabel("frequence de 11 = "+frequenceDoublets[3]));
+	  this.stats.add(new JLabel("Différence de la moitié de la suite = "+difference));
+
+
+		this.stats.repaint();
   }
 
   public Map<String, JTextField> getParametres() {

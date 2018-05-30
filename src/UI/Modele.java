@@ -11,13 +11,14 @@ import Calcul.GenerateurSuitePseudoAleatoire;
 public class Modele {
 	
 	private XYSeries serie;
+	private GenerateurSuitePseudoAleatoire g;
 	
 	public Modele() {
 	}
 	
 	public void genererDonnee(int a, int b, int x0, int m, int taille, int x1) {
 
-		GenerateurSuitePseudoAleatoire g = new GenerateurSuitePseudoAleatoire(a, b, x0, m, taille);
+		 this.g = new GenerateurSuitePseudoAleatoire(a, b, x0, m, taille);
 		Doublet<Long>[] d = g.genererDoublets();
 		    
 		this.serie = new XYSeries("X0");
@@ -48,6 +49,18 @@ public class Modele {
 	    return this.serie;
 	}
 	
+	public float getFrequence() {
+		System.out.println("reesryhtrhrt" + g.calculFrequenceDeZero());
+		return g.calculFrequenceDeZero();
+	}
 	
+	public float[] getFrequenceDoublets() {
+		System.out.println("reesryhtrhrt" + g.calculerFrequenceDeZeroPar2());
+		return g.calculerFrequenceDeZeroPar2();
+	}
+	
+	public float getDifferenceMoitie() {
+		return g.calculDifferenceMoitie();
+	}
 }
 
