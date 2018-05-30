@@ -22,8 +22,8 @@ public class Controleur implements ActionListener {
 				Integer.parseInt(this.vue.getParametres().get("b").getText()), 
 				Integer.parseInt(this.vue.getParametres().get("x0").getText()), 
 				Integer.parseInt(this.vue.getParametres().get("m").getText()), 
-				Integer.parseInt(this.vue.getParametres().get("nb").getText()), 
-				1);//??
+				Integer.parseInt(this.vue.getParametres().get("nb").getText())
+				);
 		
 		this.vue.afficherDonnee(this.modele.getDonnee());
 		
