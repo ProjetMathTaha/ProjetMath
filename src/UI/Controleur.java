@@ -16,7 +16,7 @@ public class Controleur implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		System.out.println("CONTROLEUR | a= "+this.vue.getParametres().get("a").getText());
+		System.out.println("CONTROLEUR | a= "+this.vue.getParametres().get("b").getText());
 		this.modele.genererDonnee(		
 				Integer.parseInt(this.vue.getParametres().get("a").getText()),
 				Integer.parseInt(this.vue.getParametres().get("b").getText()), 
@@ -28,7 +28,7 @@ public class Controleur implements ActionListener {
 		this.vue.afficherDonnee(this.modele.getDonnee());
 		
 		
-		this.vue.afficherStats(this.modele.getFrequence(), this.modele.getFrequenceDoublets(), this.modele.getDifferenceMoitie());
+		this.vue.afficherStats(this.modele.getFrequence(), this.modele.getFrequenceDoublets(), this.modele.getDifferenceMoitie(), this.modele.getPeriode());
 		
 	}
 

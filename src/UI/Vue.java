@@ -124,7 +124,7 @@ public class Vue extends JPanel {
 		this.graphs.repaint();
   }
   
-  public void afficherStats( float frequenceZero , float[]frequenceDoublets, float difference) {
+  public void afficherStats( float frequenceZero , float[]frequenceDoublets, float difference, int periode) {
 	  this.stats.removeAll();
 	  this.stats.revalidate();
 	  this.stats.setLayout(new GridLayout(frequenceDoublets.length +2, 1 ));
@@ -133,7 +133,11 @@ public class Vue extends JPanel {
 	  this.stats.add(new JLabel("frequence de 01 = "+frequenceDoublets[1]));
 	  this.stats.add(new JLabel("frequence de 10 = "+frequenceDoublets[2]));
 	  this.stats.add(new JLabel("frequence de 11 = "+frequenceDoublets[3]));
+	  this.stats.add(new JLabel("TOTAL 4 FREQUENCES = "+(frequenceDoublets[0]+frequenceDoublets[1]+frequenceDoublets[2]+frequenceDoublets[3])));
+	  
 	  this.stats.add(new JLabel("Différence de la moitié de la suite = "+difference));
+	  this.stats.add(new JLabel("Periodicite = "+periode));
+	  
 
 
 		this.stats.repaint();

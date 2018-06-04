@@ -12,15 +12,15 @@ import Calcul.SuitePseudoAleatoire;
 public class Modele {
 	
 	private XYSeries serie;
-	private SuiteBBS g;
+	private SuitePseudoAleatoire g;
 	
 	public Modele() {
 	}
 	
 	public void genererDonnee(int a, int b, int x0, int m, int taille) {
 
-		// this.g = new SuitePseudoAleatoire(a, b, x0, m, taille);
-		this.g= new SuiteBBS(23, 31,  16, 1000);
+		this.g = new SuitePseudoAleatoire(a, b, x0, m, taille);
+		//this.g= new SuiteBBS(23, 31,  16, 1000);
 		 g.genererSuite();
 		Doublet<Long>[] d = g.genererDoublets();
 		    
@@ -31,7 +31,7 @@ public class Modele {
 	   for(int i =0; i<d.length; i++) {
 		   this.serie.add(d[i].getA(), d[i].getB());
 		
-		   //System.out.println("MODELE | i = "+i+" a = "+d[i].getA()+" b = "+d[i].getB());
+		   System.out.println("MODELE | i = "+i+" a = "+d[i].getA()+" b = "+d[i].getB());
 	   }
 	  }
 	
@@ -51,6 +51,10 @@ public class Modele {
 	
 	public float getDifferenceMoitie() {
 		return g.calculDifferenceMoitie();
+	}
+	
+	public int getPeriode() {
+		return g.periodicite();
 	}
 }
 

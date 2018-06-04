@@ -1,11 +1,13 @@
 package Calcul;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class SuitePseudoAleatoire extends Analyse {
 
 	// parametres de bases de calcule de la suite
 	long a;
 	long b;
-	long x0;
 	
 	// modulo
 	
@@ -24,6 +26,13 @@ public class SuitePseudoAleatoire extends Analyse {
 			tabDesNombresGeneres[i]=this.x0;
 			System.out.println( x0);
 		}
+	}
+	
+	public int periodicite() {
+		Set<Long> periode = new HashSet<>();
+		for ( Long l : this.tabDesNombresGeneres)
+			periode.add(l);
+		return periode.size();
 	}
 	
 	// renvoie true si la suite respecte de le theoreme Hull-Dobell
