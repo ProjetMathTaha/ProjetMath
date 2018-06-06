@@ -45,6 +45,8 @@ public class Vue extends JPanel {
 	  	this.add(graphs, BorderLayout.CENTER);
 	  	this.add(stats, BorderLayout.SOUTH);
 	  	
+	  	
+	  	
 	  	// panel des parametres
 	  	parametres.setLayout(new GridLayout(2, 1));
   		// panel qui contient les textfield pour entrer les valeurs

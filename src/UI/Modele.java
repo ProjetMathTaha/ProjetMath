@@ -1,38 +1,28 @@
 package UI;
 
-import java.io.IOException;
-
 import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
 
+import Calcul.CongruentielLineaire;
 import Calcul.Doublet;
-import Calcul.SuiteBBS;
-import Calcul.SuitePseudoAleatoire;
+
 
 public class Modele {
 	
 	private XYSeries serie;
-	private SuitePseudoAleatoire g;
+	private CongruentielLineaire g;
 	
 	public Modele() {
 	}
 	
 	public void genererDonnee(int a, int b, int x0, int m, int taille) {
 
-		this.g = new SuitePseudoAleatoire(a, b, x0, m, taille);
-		//this.g= new SuiteBBS(23, 31,  16, 1000);
-		 g.genererSuite();
+		this.g = new CongruentielLineaire(a, b, x0, m, taille);
 		Doublet<Long>[] d = g.genererDoublets();
-		    
 		this.serie = new XYSeries("X0");
-		
-		
-		
-	   for(int i =0; i<d.length; i++) {
-		   this.serie.add(d[i].getA(), d[i].getB());
-		
-		   System.out.println("MODELE | i = "+i+" a = "+d[i].getA()+" b = "+d[i].getB());
-	   }
+		for (int i = 0; i < d.length; i++) {
+			this.serie.add(d[i].getA(), d[i].getB());
+			System.out.println("MODELE | i = " + i + " a = " + d[i].getA() + " b = " + d[i].getB());
+		}
 	  }
 	
 	public XYSeries getDonnee() {
