@@ -22,8 +22,10 @@ import org.jfree.data.xy.XYSeriesCollection;
  
 public class Vue extends JPanel { 
 	
-	private Map<String, JTextField> champsParametres; // contient les JTextField des parametres
-	private JButton valider;
+	private Map<String, JTextField> champsParametresCongruenceLineaire; // contient les JTextField des parametres de la congruence lineaire
+	private Map<String, JTextField> champsParametresBBS; // contient les JTextField des parametres de la congruence lineaire
+	private JButton validerCongruenceLineaire;	// bouton pour lancer les calculs par la methode de congruence lineaire
+	private JButton validerBBS;	// bouton pour lancer les calculs par la methode BBS
   	private JPanel parametres ;// contient les parametres ï¿½ entrer par l'utilisateur
   	private JPanel graphs; // contient les graphs
   	private JPanel stats ; // contient les stats
@@ -33,7 +35,8 @@ public class Vue extends JPanel {
 	  	Controleur controleur = new Controleur(this);
 	  
 	  	// instantiation des attributs de la classe
-	  	this.champsParametres = new HashMap<>();
+	  	this.champsParametresCongruenceLineaire = new HashMap<>();
+	  	this.champsParametresBBS = new HashMap<>();
 	  
 	  	// creation de 3 panels et ajout du layout a la classe
 	    this.setLayout(new BorderLayout());
@@ -48,48 +51,78 @@ public class Vue extends JPanel {
 	  	
 	  	
 	  	// panel des parametres
-	  	parametres.setLayout(new GridLayout(2, 1));
-  		// panel qui contient les textfield pour entrer les valeurs
-  		JPanel parametresValeurs = new JPanel();
-  		parametres.add(parametresValeurs);
-  		parametresValeurs.setLayout(new GridLayout(1, 10));
+	  	parametres.setLayout(new GridLayout(2, 2));
+  		// panel qui contient les textfield pour entrer les valeurs de la methode de congruence lineaire
+  		JPanel parametresValeursCongruenceLineaire = new JPanel();
+  		parametres.add(parametresValeursCongruenceLineaire);
+  		parametresValeursCongruenceLineaire.setLayout(new GridLayout(1, 10));
   		
   		JLabel jlabelA = new JLabel("a :");
   		jlabelA.setHorizontalAlignment(SwingConstants.CENTER);
-  		parametresValeurs.add(jlabelA);
-  		champsParametres.put("a", new JTextField("314125421"));
-  		parametresValeurs.add(champsParametres.get("a"));
+  		parametresValeursCongruenceLineaire.add(jlabelA);
+  		champsParametresCongruenceLineaire.put("a", new JTextField("314125421"));
+  		parametresValeursCongruenceLineaire.add(champsParametresCongruenceLineaire.get("a"));
   		
   		JLabel jlabelB = new JLabel("b :");
   		jlabelB.setHorizontalAlignment(SwingConstants.CENTER);
-  		parametresValeurs.add(jlabelB);
-  		champsParametres.put("b", new JTextField("1"));
-  		parametresValeurs.add(champsParametres.get("b"));
+  		parametresValeursCongruenceLineaire.add(jlabelB);
+  		champsParametresCongruenceLineaire.put("b", new JTextField("1"));
+  		parametresValeursCongruenceLineaire.add(champsParametresCongruenceLineaire.get("b"));
   		
   		JLabel jlabelX0 = new JLabel("x0 :");
   		jlabelX0.setHorizontalAlignment(SwingConstants.CENTER);
-  		parametresValeurs.add(jlabelX0);
-  		champsParametres.put("x0", new JTextField("4327"));
-  		parametresValeurs.add(champsParametres.get("x0"));
+  		parametresValeursCongruenceLineaire.add(jlabelX0);
+  		champsParametresCongruenceLineaire.put("x0", new JTextField("4327"));
+  		parametresValeursCongruenceLineaire.add(champsParametresCongruenceLineaire.get("x0"));
   		
   		JLabel jlabelM = new JLabel("m :");
   		jlabelM.setHorizontalAlignment(SwingConstants.CENTER);
-  		parametresValeurs.add(jlabelM);
-  		champsParametres.put("m", new JTextField("2675591"));
-  		parametresValeurs.add(champsParametres.get("m"));
+  		parametresValeursCongruenceLineaire.add(jlabelM);
+  		champsParametresCongruenceLineaire.put("m", new JTextField("2675591"));
+  		parametresValeursCongruenceLineaire.add(champsParametresCongruenceLineaire.get("m"));
   		
   		JLabel jlabelNB = new JLabel("nb :");
   		jlabelNB.setHorizontalAlignment(SwingConstants.CENTER);
-  		parametresValeurs.add(jlabelNB);
-  		champsParametres.put("nb", new JTextField("20001"));
-  		parametresValeurs.add(champsParametres.get("nb"));
+  		parametresValeursCongruenceLineaire.add(jlabelNB);
+  		champsParametresCongruenceLineaire.put("nb", new JTextField("20001"));
+  		parametresValeursCongruenceLineaire.add(champsParametresCongruenceLineaire.get("nb"));
+  		
+  		// panel qui contient les textfield pour entrer les valeurs de la methode de congruence lineaire
+  		JPanel parametresValeursBBS = new JPanel();
+  		parametres.add(parametresValeursBBS);
+  		parametresValeursBBS.setLayout(new GridLayout(1, 6));
+  		
+  		JLabel jlabelX0_BBS = new JLabel("x0 :");
+  		jlabelX0_BBS.setHorizontalAlignment(SwingConstants.CENTER);
+  		parametresValeursBBS.add(jlabelX0_BBS);
+  		champsParametresBBS.put("x0", 
+  				new JTextField("4327"));
+  		parametresValeursBBS.add(champsParametresBBS.get("x0"));
+  		
+  		JLabel jlabelM_BBS = new JLabel("m :");
+  		jlabelM_BBS.setHorizontalAlignment(SwingConstants.CENTER);
+  		parametresValeursBBS.add(jlabelM_BBS);
+  		champsParametresBBS.put("m", new JTextField("2675591"));
+  		parametresValeursBBS.add(champsParametresBBS.get("m"));
+  		
+  		JLabel jlabelNB_BBS = new JLabel("nb :");
+  		jlabelNB_BBS.setHorizontalAlignment(SwingConstants.CENTER);
+  		parametresValeursBBS.add(jlabelNB_BBS);
+  		champsParametresBBS.put("nb", new JTextField("20001"));
+  		parametresValeursBBS.add(champsParametresBBS.get("nb"));
   		
   		
-  		// le bouton valider
-  		this.valider = new JButton("valider");
-  		this.valider.addActionListener(controleur);
-  		parametres.add(this.valider);
-
+  		// le bouton valider congruence lineaire
+  		this.validerCongruenceLineaire = new JButton("Calculer en Congruence Linéaire");
+  		this.validerCongruenceLineaire.setMnemonic(1);
+  		this.validerCongruenceLineaire.addActionListener(controleur);
+  		parametres.add(this.validerCongruenceLineaire);
+  		
+		// le bouton valider
+  		this.validerBBS = new JButton("Calculer en Congruence Linéaire");
+  		this.validerBBS.setMnemonic(0);
+  		this.validerBBS.addActionListener(controleur);
+  		parametres.add(this.validerBBS);
 	    
   		JFreeChart graph = ChartFactory.createScatterPlot(
   		        "Nuage de points", 
@@ -145,9 +178,13 @@ public class Vue extends JPanel {
 		this.stats.repaint();
   }
 
-  public Map<String, JTextField> getParametres() {
-	  return this.champsParametres;
+  public Map<String, JTextField> getParametresCongruenceLineaire() {
+	  return this.champsParametresCongruenceLineaire;
   }
+  public Map<String, JTextField> getParametresBBS() {
+	  return this.champsParametresBBS;
+  }
+  
   
   
 }

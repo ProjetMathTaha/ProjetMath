@@ -3,15 +3,18 @@ package Calcul;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.jfree.data.xy.XYSeries;
+
 public abstract class GenerateurSuite {
 	
-	
 	long[] tabDesNombresGeneres;		// tableau contenant le resultat de tous les nombres generes
-	int[] tabModDeux;					// tableau contenant les nombre generes modulo deux
+	int[] tabModDeux;
+	// tableau contenant les nombre generes modulo deux
 
 	public GenerateurSuite(long x0, long modulo, int taille) {
 		this.tabDesNombresGeneres = new long[taille];
 		this.tabModDeux = new int[taille];
+		
 	}
 
 	
@@ -95,6 +98,22 @@ public abstract class GenerateurSuite {
 		return this.tabDesNombresGeneres;
 	}
 	
+	//crée les points pour le graphe
+	public XYSeries genererSerie() {
+		Doublet<Long>[] d = this.genererDoublets();
+		XYSeries serie = new XYSeries("X0");
+		for (int i = 0; i < d.length; i++) {
+			serie.add(d[i].getA(), d[i].getB());
+		}
+		return serie;
+	}
 	
-	
+	// calcul meilleur x0
+	public int calculMeilleurSeed() {
+		int[] tab = new int[100];
+		for ( int i = 0 ; i < 100 ; i++ ) {
+			tab[i] = this.genere
+		}
+	}
+
 }
